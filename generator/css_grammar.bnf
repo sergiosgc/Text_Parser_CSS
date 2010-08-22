@@ -1,0 +1,816 @@
+<start>(A) ::= <stylesheet>(B)
+
+<stylesheet>(A) ::= <stylesheet_1>(B) <stylesheet_2>(C)
+<<<
+require_once('Structures/CSS.php');
+$result = new Structures_CSS($C->getValue(), $B->getValue());
+>>>
+<stylesheet>(A) ::= <stylesheet_1>(B)
+<<<
+require_once('Structures/CSS.php');
+$result = new Structures_CSS($a = array(), $B->getValue());
+>>>
+<stylesheet>(A) ::= <stylesheet_2>(B)
+<<<
+require_once('Structures/CSS.php');
+$result = new Structures_CSS($B->getValue());
+>>>
+<stylesheet_1>(A) ::= <stylesheet_charset>(B) <s_cdo_cdc_plus>
+<<<
+$result =& $B->getValue();
+>>>
+<stylesheet_1>(A) ::= <s_cdo_cdc_plus>
+<<<
+$result = null;
+>>>
+<stylesheet_charset>(A) ::= <charset_sym_sstar> <string_sstar>(B) <SEMICOLON>
+<<<
+$result =& $B->getValue();
+>>>
+<charset_sym_sstar> ::= <CHARSET_SYM>
+<charset_sym_sstar> ::= <CHARSET_SYM> <splus>
+
+<splus> ::= <SS>
+<splus> ::= <SS> <splus>
+<string_sstar>(A) ::= <STRING>(B)
+<string_sstar>(A) ::= <STRING>(B) <splus>
+<s_cdo_cdc_plus> ::= <s_cdo_cdc>
+<s_cdo_cdc_plus> ::= <s_cdo_cdc_plus> <s_cdo_cdc>
+<s_cdo_cdc> ::= <SS>|<CDO>|<CDC>
+<stylesheet_2>(A) ::= <stylesheet_import>(B) <stylesheet_ruleset_media_page>(C)
+<<<
+$result = array_merge((array) $B->getValue(), (array) $C->getValue());
+>>>
+<stylesheet_2>(A) ::= <stylesheet_ruleset_media_page>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<stylesheet_import>(A) ::= <import>(B) <s_cdo_cdc_plus>
+<<<
+$result =& $B->getValue();
+>>>
+<stylesheet_import>(A) ::= <import>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<stylesheet_import>(A) ::= <stylesheet_import>(B) <import>(C) <s_cdo_cdc_plus>
+<<<
+$result = array_merge((array) $B->getValue(), (array) $C->getValue());
+>>>
+<stylesheet_import>(A) ::= <stylesheet_import>(B) <import>(C)
+<<<
+$result = array_merge((array) $B->getValue(), (array) $C->getValue());
+>>>
+<stylesheet_ruleset_media_page>(A) ::= <ruleset>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<stylesheet_ruleset_media_page>(A) ::= <media>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<stylesheet_ruleset_media_page>(A) ::= <page>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<stylesheet_ruleset_media_page>(A) ::= <stylesheet_ruleset_media_page>(B) <ruleset>(C)
+<<<
+$result = array_merge((array) $B->getValue(), (array) $C->getValue());
+>>>
+<stylesheet_ruleset_media_page>(A) ::= <stylesheet_ruleset_media_page>(B) <media>(C)
+<<<
+$result = array_merge((array) $B->getValue(), (array) $C->getValue());
+>>>
+<stylesheet_ruleset_media_page>(A) ::= <stylesheet_ruleset_media_page>(B) <page>(C)
+<<<
+$result = array_merge((array) $B->getValue(), (array) $C->getValue());
+>>>
+
+
+<import>(A) ::= <import_sym_sstar> <string_or_uri_sstar>(B) <SEMICOLON>
+<<<
+require_once('Structures/CSS/Rule/AtImport.php');
+$result = array(new Structures_CSS_Rule_AtImport($B->getValue()));
+>>>
+<import>(A) ::= <import_sym_sstar> <string_or_uri_sstar>(B) <medialist>(C) <SEMICOLON>
+<<<
+require_once('Structures/CSS/Rule/AtImport.php');
+$result = array(new Structures_CSS_Rule_AtImport($B->getValue(), $C->getValue()));
+>>>
+<import_sym_sstar> ::= <IMPORT_SYM>
+<import_sym_sstar> ::= <IMPORT_SYM> <splus>
+<string_or_uri_sstar>(A) ::= <string_sstar>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<string_or_uri_sstar>(A) ::= <URI>(B) <splus>
+<<<
+$result =& $B->getValue();
+>>>
+<string_or_uri_sstar>(A) ::= <URI>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<medialist>(A) ::= <medium>(B)
+<<<
+$result = array($B->getValue());
+>>>
+<medialist>(A) ::= <medialist>(B) <COMMA> <medium>(C)
+<<<
+$result =& $B->getValue();
+$result[] = $C->getValue();
+>>>
+<medialist>(A) ::= <medialist>(B) <COMMA> <splus> <medium>(C)
+<<<
+$result =& $B->getValue();
+$result[] = $C->getValue();
+>>>
+
+
+<media>(A) ::= <media_sym_sstar> <medialist>(B) <LBRACE> <splus> <rulesetplus>(C) <RBRACE>
+<<<
+require_once('Structures/CSS/Rule/AtMedia.php');
+$result = array(new Structures_CSS_Rule_AtMedia($B->getValue(), $C->getValue()));;
+>>>
+<media>(A) ::= <media_sym_sstar> <medialist>(B) <LBRACE> <splus> <rulesetplus>(C) <RBRACE> <splus>
+<<<
+require_once('Structures/CSS/Rule/AtMedia.php');
+$result = array(new Structures_CSS_Rule_AtMedia($B->getValue(), $C->getValue()));;
+>>>
+<media>(A) ::= <media_sym_sstar> <medialist>(B) <LBRACE> <rulesetplus>(C) <RBRACE>
+<<<
+require_once('Structures/CSS/Rule/AtMedia.php');
+$result = array(new Structures_CSS_Rule_AtMedia($B->getValue(), $C->getValue()));;
+>>>
+<media>(A) ::= <media_sym_sstar> <medialist>(B) <LBRACE> <rulesetplus>(C) <RBRACE> <splus>
+<<<
+require_once('Structures/CSS/Rule/AtMedia.php');
+$result = array(new Structures_CSS_Rule_AtMedia($B->getValue(), $C->getValue()));;
+>>>
+<media>(A) ::= <media_sym_sstar> <medialist>(B) <LBRACE> <splus> <RBRACE>
+<<<
+require_once('Structures/CSS/Rule/AtMedia.php');
+$result = array(new Structures_CSS_Rule_AtMedia($B->getValue(), array()));
+>>>
+<media>(A) ::= <media_sym_sstar> <medialist>(B) <LBRACE> <splus> <RBRACE> <splus>
+<<<
+require_once('Structures/CSS/Rule/AtMedia.php');
+$result = array(new Structures_CSS_Rule_AtMedia($B->getValue(), array()));
+>>>
+<media>(A) ::= <media_sym_sstar> <medialist>(B) <LBRACE> <RBRACE>
+<<<
+require_once('Structures/CSS/Rule/AtMedia.php');
+$result = array(new Structures_CSS_Rule_AtMedia($B->getValue(), array()));
+>>>
+<media>(A) ::= <media_sym_sstar> <medialist>(B) <LBRACE> <RBRACE> <splus>
+<<<
+require_once('Structures/CSS/Rule/AtMedia.php');
+$result = array(new Structures_CSS_Rule_AtMedia($B->getValue(), array()));
+>>>
+<media_sym_sstar> ::= <MEDIA_SYM>
+<media_sym_sstar> ::= <MEDIA_SYM> <splus>
+<rulesetplus>(A) ::= <ruleset>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<rulesetplus>(A) ::= <rulesetplus>(B) <ruleset>(C)
+<<<
+$result =& $B->getValue();
+$result[] = $C->getValue();
+>>>
+
+
+<medium>(A) ::= <IDENT>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<medium>(A) ::= <IDENT>(B) <splus>
+<<<
+$result =& $B->getValue();
+>>>
+
+
+<page>(A) ::= <ppage>(B)
+<<<
+$B = $B->getValue();
+require_once('Structures/CSS/Rule/AtPage.php');
+$result = array(new Structures_CSS_Rule_AtPage($B['declarations'], $B['pseudo']));;
+>>>
+<ppage>(A) ::= <pagesym_sstar> <pseudo_page>(B) <splus> <LBRACE> <declarations_optional_semicolon>(C) <RBRACE>
+<<<
+$result = array(
+    'pseudo' => $B->getValue(),
+    'declarations' => $C->getValue()
+);
+>>>
+<ppage>(A) ::= <pagesym_sstar> <pseudo_page>(B) <splus> <LBRACE> <declarations_optional_semicolon>(C) <RBRACE> <splus>
+<<<
+$result = array(
+    'pseudo' => $B->getValue(),
+    'declarations' => $C->getValue()
+);
+>>>
+<ppage>(A) ::= <pagesym_sstar> <pseudo_page>(B) <LBRACE> <declarations_optional_semicolon>(C) <RBRACE>
+<<<
+$result = array(
+    'pseudo' => $B->getValue(),
+    'declarations' => $C->getValue()
+);
+>>>
+<ppage>(A) ::= <pagesym_sstar> <pseudo_page>(B) <LBRACE> <declarations_optional_semicolon>(C) <RBRACE> <splus>
+<<<
+$result = array(
+    'pseudo' => $B->getValue(),
+    'declarations' => $C->getValue()
+);
+>>>
+<ppage>(A) ::= <pagesym_sstar> <LBRACE> <declarations_optional_semicolon>(C) <RBRACE>
+<<<
+$result = array(
+    'pseudo' => null,
+    'declarations' => $C->getValue()
+);
+>>>
+<ppage>(A) ::= <pagesym_sstar> <LBRACE> <declarations_optional_semicolon>(C) <RBRACE> <splus>
+<<<
+$result = array(
+    'pseudo' => null,
+    'declarations' => $C->getValue()
+);
+>>>
+<pagesym_sstar> ::= <PAGE_SYM>
+<pagesym_sstar> ::= <PAGE_SYM> <splus>
+<declarations_optional_semicolon>(A) ::= <declarations>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<declarations_optional_semicolon>(A) ::= <declarations>(B) <SEMICOLON>
+<<<
+$result =& $B->getValue();
+>>>
+<declarations>(A) ::= <sstar_declaration>(B)
+<<<
+$result = array($B->getValue());
+>>>
+<declarations>(A) ::= <declarations>(B) <SEMICOLON> <sstar_declaration>(C)
+<<<
+$result =& $B->getValue();
+$result[] = $C->getValue();
+>>>
+<sstar_declaration>(A) ::= <declaration>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<sstar_declaration>(A) ::= <splus> <declaration>(B)
+<<<
+$result =& $B->getValue();
+>>>
+
+<pseudo_page>(A) ::= <COLON>(B) <IDENT>(C)
+<<<
+$result = $B->getValue() . $C->getValue();
+>>>
+
+<operator>(A) ::= <SLASH>
+<<<
+$result = '/';
+>>>
+<operator>(A) ::= <SLASH> <splus>
+<<<
+$result = '/';
+>>>
+<operator>(A) ::= <COMMA>
+<<<
+$result = ',';
+>>>
+<operator>(A) ::= <COMMA> <splus>
+<<<
+$result = ',';
+>>>
+
+<combinator>(A) ::= <GREATER> <splus>
+<<<
+$result = '>';
+>>>
+<combinator>(A) ::= <PLUS> <splus>
+<<<
+$result = '+';
+>>>
+<combinator>(A) ::= <SS>
+<<<
+$result = ' ';
+>>>
+
+<unary_operator>(A) ::= <MINUS>
+<<<
+$result = '-';
+>>>
+<unary_operator>(A) ::= <PLUS>
+<<<
+$result = '+';
+>>>
+
+<property>(A) ::= <IDENT>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<property>(A) ::= <IDENT>(B) <splus>
+<<<
+$result =& $B->getValue();
+>>>
+
+<ruleset>(A) ::= <rruleset>(B)
+<<<
+require_once('Structures/CSS/Rule/Set.php');
+$B = $B->getValue();
+$result = array();
+$clone = null;
+foreach ($B['selectors'] as $selector) {
+    if (!is_null($clone)) $B['declarations'] = unserialize($clone);
+    $result[] = new Structures_CSS_Rule_Set($selector, $B['declarations']);
+    if (is_null($clone)) $clone = serialize($B['declarations']);
+}
+unset($clone);
+>>>
+
+<rruleset>(A) ::= <selectors>(B) <LBRACE> <declarations_optional_semicolon>(C) <RBRACE> <splus>
+<<<
+$result = array(
+    'selectors' => $B->getValue(),
+    'declarations' => $C->getValue()
+);
+>>>
+<rruleset>(A) ::= <selectors>(B) <LBRACE> <declarations_optional_semicolon>(C) <RBRACE>
+<<<
+$result = array(
+    'selectors' => $B->getValue(),
+    'declarations' => $C->getValue()
+);
+>>>
+<selectors>(A) ::= <selector>(B)
+<<<
+$result = array($B->getValue());
+>>>
+<selectors>(A) ::= <selectors>(B) <comma_sstar> <selector>(C)
+<<<
+$result =& $B->getValue();
+$result[] = $C->getValue();
+>>>
+<comma_sstar> ::= <COMMA>
+<comma_sstar> ::= <COMMA> <splus>
+
+<rruleset>(A) ::= <selectors>(B) <LBRACE> <RBRACE>
+<<<
+$result = array(
+    'selectors' => $B->getValue(),
+    'declarations' => array()
+);
+>>>
+<rruleset>(A) ::= <selectors>(B) <LBRACE> <splus> <RBRACE>
+<<<
+$result = array(
+    'selectors' => $B->getValue(),
+    'declarations' => array()
+);
+>>>
+<rruleset>(A) ::= <selectors>(B) <LBRACE> <RBRACE> <splus>
+<<<
+$result = array(
+    'selectors' => $B->getValue(),
+    'declarations' => array()
+);
+>>>
+<rruleset>(A) ::= <selectors>(B) <LBRACE> <splus> <RBRACE> <splus>
+<<<
+$result = array(
+    'selectors' => $B->getValue(),
+    'declarations' => array()
+);
+>>>
+
+<selector>(A) ::= <simple_selector>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<selector>(A) ::= <simple_selector>(B) <combinator>(C) <selector>(D)
+<<<
+$result =& $B->getValue();
+$result->appendSelector($D->getValue(), $C->getValue());
+>>>
+
+<simple_selector>(A) ::= <element_name>(B)
+<<<
+require_once('Structures/CSS/Selector.php');
+$result = new Structures_CSS_Selector(strtolower($B->getValue()), Structures_CSS_Selector::C);
+>>>
+<simple_selector>(A) ::= <element_name>(B) <hash_class_attrib_pseudo_plus>(D)
+<<<
+require_once('Structures/CSS/Selector.php');
+$result = new Structures_CSS_Selector(strtolower($B->getValue()), Structures_CSS_Selector::C); 
+$result->appendSelector($D->getValue(), '');
+>>>
+<simple_selector>(A) ::= <hash_class_attrib_pseudo_plus>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<hash_class_attrib_pseudo_plus>(A) ::= <hash_class_attrib_pseudo>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<hash_class_attrib_pseudo_plus>(A) ::= <hash_class_attrib_pseudo_plus>(B) <hash_class_attrib_pseudo>(C)
+<<<
+$result =& $B->getValue();
+$result->appendSelector($C->getValue(), '');
+>>>
+<hash_class_attrib_pseudo>(A) ::= <HASH>(B)
+<<<
+require_once('Structures/CSS/Selector.php');
+$result = new Structures_CSS_Selector($B->getValue(), 1000000);
+>>>
+<hash_class_attrib_pseudo>(A) ::= <class>(B)
+<<<
+require_once('Structures/CSS/Selector.php');
+$result = new Structures_CSS_Selector($B->getValue(), 1000);
+>>>
+<hash_class_attrib_pseudo>(A) ::= <attrib>(B)
+<<<
+require_once('Structures/CSS/Selector.php');
+$result = new Structures_CSS_Selector($B->getValue(), 1000);
+>>>
+<hash_class_attrib_pseudo>(A) ::= <pseudo>(B)
+<<<
+require_once('Structures/CSS/Selector.php');
+$result = new Structures_CSS_Selector($B->getValue(), 1000);
+>>>
+
+<class>(A) ::= <DOT> <IDENT>(B)
+<<<
+$result = '.' . $B->getValue();
+>>>
+
+<element_name>(A) ::= <IDENT>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<element_name>(A) ::= <STAR>(B)
+<<<
+$result =& $B->getValue();
+>>>
+
+<attrib>(A) ::= <LBRACKET> <trimmed_ident>(B) <RBRACKET>
+<<<
+$result = '[' . $B->getValue() . ']';
+>>>
+<attrib>(A) ::= <LBRACKET> <trimmed_ident>(B) <attrib_operator_sstar>(C) <attrib_operator_rhand_sstar>(D) <RBRACKET>
+<<<
+$result = '[' . $B->getValue() . $C->getValue() . $D->getValue() . ']';
+>>>
+<attrib>(A) ::= <LBRACKET> <trimmed_ident>(B) <attrib_operator_sstar>(C) <RBRACKET>
+<<<
+$result = '[' . $B->getValue() . $C->getValue() . ']';
+>>>
+<trimmed_ident>(A) ::= <IDENT>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<trimmed_ident>(A) ::= <splus> <IDENT>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<trimmed_ident>(A) ::= <IDENT>(B) <splus>
+<<<
+$result =& $B->getValue();
+>>>
+<trimmed_ident>(A) ::= <splus> <IDENT>(B) <splus>
+<<<
+$result =& $B->getValue();
+>>>
+<attrib_operator_sstar>(A) ::= <attrib_operator>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<attrib_operator_sstar>(A) ::= <attrib_operator>(B) <splus>
+<<<
+$result =& $B->getValue();
+>>>
+<attrib_operator>(A) ::= <INCLUDES>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<attrib_operator>(A) ::= <DASHMATCH>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<attrib_operator>(A) ::= <EQUAL>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<attrib_operator_rhand_sstar>(A) ::= <attrib_operator_rhand>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<attrib_operator_rhand_sstar>(A) ::= <attrib_operator_rhand>(B) <splus>
+<<<
+$result =& $B->getValue();
+>>>
+<attrib_operator_rhand>(A) ::= <STRING>(B)
+<<<
+$result =& $B->getValue();
+>>>
+<attrib_operator_rhand>(A) ::= <IDENT>(B)
+<<<
+$result =& $B->getValue();
+>>>
+
+<pseudo>(A) ::= <COLON> <IDENT>(B)
+<<<
+$result = ':' . $B->getValue();
+>>>
+<pseudo>(A) ::= <COLON> <CSSFUNCTION>(B) <trimmed_ident>(C) <RPAREN>
+<<<
+$result = ':' . $B->getValue();
+>>>
+<pseudo>(A) ::= <COLON> <CSSFUNCTION>(B) <splus> <RPAREN>
+<<<
+$result =& $B->getValue();
+>>>
+<pseudo>(A) ::= <COLON> <CSSFUNCTION>(B) <RPAREN>
+<<<
+$result =& $B->getValue();
+>>>
+
+<declaration>(A) ::= <ddeclaration>(B) 
+<<<
+require_once('Structures/CSS/Declaration.php');
+$B = $B->getValue();
+$result = Structures_CSS_Declaration::create($B['property'], $B['expressions'], $B['priority']);
+>>>
+<ddeclaration>(A) ::= <property>(B) <COLON> <splus> <expr>(C) <prio>
+<<<
+$result = array(
+    'property' => $B->getValue(),
+    'expressions' => $C->getValue(),
+    'priority' => true
+);
+>>>
+<ddeclaration>(A) ::= <property>(B) <COLON> <splus> <expr>(C)
+<<<
+$result = array(
+    'property' => $B->getValue(),
+    'expressions' => $C->getValue(),
+    'priority' => false
+);
+>>>
+<ddeclaration>(A) ::= <property>(B) <COLON> <expr>(C) <prio>
+<<<
+$result = array(
+    'property' => $B->getValue(),
+    'expressions' => $C->getValue(),
+    'priority' => true
+);
+>>>
+<ddeclaration>(A) ::= <property>(B) <COLON> <expr>(C)
+<<<
+$result = array(
+    'property' => $B->getValue(),
+    'expressions' => $C->getValue(),
+    'priority' => false
+);
+>>>
+
+<prio> ::= <important_sym_sstar>
+<important_sym_sstar> ::= <IMPORTANT_SYM>
+<important_sym_sstar> ::= <IMPORTANT_SYM> <splus>
+
+<expr>(A) ::= <term>(B)
+<<<
+$result = array($B->getValue());
+>>>
+<expr>(A) ::= <expr>(B) <term>(D)
+<<<
+$result =& $B->getValue();
+$result[] = $D->getValue();
+$result[] = '';
+>>>
+<expr>(A) ::= <expr>(B) <operator>(C) <term>(D)
+<<<
+$result =& $B->getValue();
+$result[] = $D->getValue();
+$result[] = $C->getValue();
+>>>
+
+<term>(A) ::= <term_numeric>(B)
+<<<
+$result = $B->getValue();
+>>>
+<term>(A) ::= <term_nonnumeric>(B)
+<<<
+$result = $B->getValue();
+>>>
+<term_numeric>(A)::= <unary_operator>(B) <term_numeric_number>(C) 
+<<<
+$result = $C->getValue();
+if ($B->getValue() == '-') $result->setNumericValue(-1 * $result->getNumericValue());
+>>>
+<term_numeric>(A) ::= <term_numeric_number>(B)
+<<<
+$result = $B->getValue();
+>>>
+<term_numeric_number>(A) ::= <NUMBER>(B)
+<<<
+require_once('Structures/CSS/Value/Numeric.php');
+$result = Structures_CSS_Value_Numeric::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <NUMBER>(B) <splus>
+<<<
+require_once('Structures/CSS/Value/Numeric.php');
+$result = Structures_CSS_Value_Numeric::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <PERCENTAGE>(B)
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <PERCENTAGE>(B) <splus>
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <LENGTH>(B)
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <LENGTH>(B) <splus>
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <EMS>(B)
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <EMS>(B) <splus>
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <EXS>(B)
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <EXS>(B) <splus>
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <ANGLE>(B)
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <ANGLE>(B) <splus>
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <TIME>(B)
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <TIME>(B) <splus>
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <FREQ>(B)
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <FREQ>(B) <splus>
+<<<
+require_once('Structures/CSS/Value/Unit.php');
+$result = Structures_CSS_Value_Unit::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <DIMENSION>(B)
+<<<
+require_once('Structures/CSS/Value/Generic.php');
+$result = Structures_CSS_Value_Generic::create($B->getValue());
+>>>
+<term_numeric_number>(A) ::= <DIMENSION>(B) <splus>
+<<<
+require_once('Structures/CSS/Value/Generic.php');
+$result = Structures_CSS_Value_Generic::create($B->getValue());
+>>>
+<term_nonnumeric>(A) ::= <STRING>(B)
+<<<
+require_once('Structures/CSS/Value/Generic.php');
+$result = Structures_CSS_Value_Generic::create($B->getValue());
+>>>
+<term_nonnumeric>(A) ::= <STRING>(B) <splus>
+<<<
+require_once('Structures/CSS/Value/Generic.php');
+$result = Structures_CSS_Value_Generic::create($B->getValue());
+>>>
+<term_nonnumeric>(A) ::= <IDENT>(B)
+<<<
+require_once('Structures/CSS/Value/Generic.php');
+$result = Structures_CSS_Value_Generic::create($B->getValue());
+>>>
+<term_nonnumeric>(A) ::= <IDENT>(B) <splus>
+<<<
+require_once('Structures/CSS/Value/Generic.php');
+$result = Structures_CSS_Value_Generic::create($B->getValue());
+>>>
+<term_nonnumeric>(A) ::= <URI>(B)
+<<<
+$B = preg_replace('/url\((.*)\)/', '\1', $B->getValue());
+if ($B[0] == "'" && $B[strlen($B) - 1] == "'" || 
+    $B[0] == '"' && $B[strlen($B) - 1] == '"') {
+  $B = substr($B, 1, strlen($B) - 2);
+  $B = strtr($B, array('\\"' => '"', "\\'" => "'", '\\\\' => '\\'));
+}
+require_once('Structures/CSS/Value/URI.php');
+$result = new Structures_CSS_Value_URI($B);
+>>>
+<term_nonnumeric>(A) ::= <URI>(B) <splus>
+<<<
+$B = preg_replace('/url\((.*)\)/', '\1', $B->getValue());
+if ($B[0] == "'" && $B[strlen($B) - 1] == "'" || 
+    $B[0] == '"' && $B[strlen($B) - 1] == '"') {
+  $B = substr($B, 1, strlen($B) - 2);
+  $B = strtr($B, array('\\"' => '"', "\\'" => "'", '\\\\' => '\\'));
+}
+require_once('Structures/CSS/Value/URI.php');
+$result = new Structures_CSS_Value_URI($B);
+>>>
+<term_nonnumeric>(A) ::= <hexcolor>(B)
+<<<
+$result = $B->getValue();
+>>>
+<term_nonnumeric>(A) ::= <function>(B) 
+<<<
+require_once('Structures/CSS/Value/Numeric.php');
+require_once('Structures/CSS/Value/Color.php');
+require_once('Structures/CSS/Value/Function.php');
+$B = $B->getValue();
+if (strtolower($B['name']) == 'rgb' &&
+    count($B['args']) == 5 &&
+    $B['args'][2] == ',' && 
+    $B['args'][4] == ',' &&
+    $B['args'][0] instanceof Structures_CSS_Value_Numeric &&
+    $B['args'][1] instanceof Structures_CSS_Value_Numeric &&
+    $B['args'][3] instanceof Structures_CSS_Value_Numeric
+    ) {
+    $result = new Structures_CSS_Value_Color($B['args'][0]->getNumericValue(), $B['args'][1]->getNumericValue(), $B['args'][3]->getNumericValue());
+} else {   
+    $result =& new Structures_CSS_Value_Function($B);
+} 
+>>>
+
+<hexcolor>(A) ::= <HASH>(B)
+<<<
+require_once('Structures/CSS/Value/Color.php');
+$result = Structures_CSS_Value_Color::create($B->getValue());
+>>>
+<hexcolor>(A) ::= <HASH>(B) <splus>
+<<<
+require_once('Structures/CSS/Value/Color.php');
+$result = Structures_CSS_Value_Color::create($B->getValue());
+>>>
+
+<function>(A) ::= <CSSFUNCTION>(B) <splus> <expr>(C) <RPAREN> <splus>
+<<<
+$result = array(
+    'name' => strtr($B->getValue(), array('(' => '')),
+    'args' => $C->getValue(),
+);
+>>>
+<function>(A) ::= <CSSFUNCTION>(B) <splus> <expr>(C) <RPAREN>
+<<<
+$result = array(
+    'name' => strtr($B->getValue(), array('(' => '')),
+    'args' => $C->getValue(),
+);
+>>>
+<function>(A) ::= <CSSFUNCTION>(B) <expr>(C) <RPAREN> <splus>
+<<<
+$result = array(
+    'name' => strtr($B->getValue(), array('(' => '')),
+    'args' => $C->getValue(),
+);
+>>>
+<function>(A) ::= <CSSFUNCTION>(B) <expr>(C) <RPAREN>
+<<<
+$result = array(
+    'name' => strtr($B->getValue(), array('(' => '')),
+    'args' => $C->getValue(),
+);
+>>>
+
+<stylesheet> ::= <placeholder>
+<placeholder> ::= <COMMENT>

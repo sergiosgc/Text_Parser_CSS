@@ -1,0 +1,499 @@
+div.prevbutton,
+.customizeblog div#body div.prevbutton 
+{
+ background: transparent url('/images/button.greenprevious.gif') no-repeat scroll top left;
+ padding-right: 10px;
+ padding-left: 23px;
+}
+
+div#body div.greenbutton a,
+div#body div.nextbutton a,
+div#body div.prevbutton a
+{
+ color: white;
+ text-decoration: none;
+}
+
+.customizeblogzoom .imagepick .white,
+.customizeblogheaderzoom .imagepick .white
+{
+ background: white url('/images/zoom.top.gif') no-repeat scroll top left;
+ width: 575px;
+ padding: 10px 13px 0px 13px;
+}
+
+.customizeblogzoom .imagepick .white img,
+.customizeblogheaderzoom .imagepick .white img
+{
+ max-width: 575px;
+ overflow: hidden;
+}
+
+.customizeblogzoom .imagepick,
+.customizeblogheaderzoom .imagepick 
+{
+ background: transparent url('/images/zoom.bottom.gif') no-repeat scroll bottom left;
+ padding: 0px 0px 10px 0px;
+}
+
+
+div#footer 
+{
+ background: white url('/images/footer.bg.png') no-repeat scroll top left;
+ color: #666666;
+ text-align: left;
+ display: block;
+
+ height: 13px;
+ width: 739px;
+ padding: 13px 0px 13px 0px;
+ margin: 40px auto 0px auto;
+}
+
+#footer #footer-copyright
+{
+ float: left;
+ margin-left: 14px;
+}
+
+#footer #footer-menu
+{
+ float: right;
+ margin-right: 15px;
+}
+
+#footer #footer-menu a
+{
+ color: #666666;
+}
+
+
+ul.directory-list-directories
+{
+ margin: 0px;
+ padding: 0px 0px 0px 10px;
+ list-style-type: none;
+}
+
+ul.directory-list-directories li
+{
+ margin: 0px;
+ padding: 0px 0px 0px 0px;
+}
+
+li.directory-list-current
+{
+ background-image: url('/images/currentDir.png');
+ background-repeat: no-repeat;
+ background-attachment: scroll;
+ background-position: center left;
+ position: relative;
+ left: -18px;
+}
+
+li.directory-list-current a
+{
+ padding-left: 18px;
+}
+
+
+table.layout
+{
+ width: 100%;
+}
+table.layout td
+{
+ vertical-align: top;
+}
+table.data
+{
+ width: 100%;
+}
+table.data th
+{
+ color: white;
+ background: #336699;
+}
+table.data tr.even
+{
+ color: white;
+ background-color:white;
+}
+table.data tr.odd
+{
+ color: white;
+ background-color:#ecf6f8;
+}
+
+table td.dota
+{
+ background: url('/images/dota.png') no-repeat center center;
+}
+
+table td.dotb
+{
+ background: url('/images/dotb.png') no-repeat center center;
+}
+
+table.data td{
+ text-align: center;
+}
+
+
+table.data td.feat{
+ text-align: left;
+ width: 250px;
+}
+
+#photos-header-title{
+   color: #1296b6; 
+   text-align: left;
+   font: normal normal normal 25px/1.4 Arial,sans-serif;
+}
+#photos-header h1 {
+   display: none;
+}
+#happybirthday-header,
+#photos-header,
+.country-header,
+#language-header,
+#updated-header{
+   height: 36px;
+   width: 568px;
+   color: #1296b6; 
+   padding: 10px 0px 67px 172px;
+   margin: 5px;
+   text-align: left;
+   background: white none no-repeat scroll top left;
+   font: normal normal normal 25px/1.4 Arial,sans-serif;
+}
+#happybirthday-header  {
+   background-image: url('/images/happy.png');
+   padding: 52px 0px 25px 172px;
+   font: normal normal normal 12px/1.2 Arial,sans-serif;
+}
+#photos-header  {
+   background-image: url('/images/photos.png');
+   font: normal normal normal 12px/1.2 Arial,sans-serif;
+}
+.country-header{
+   background-image: url('/images/countries/country.png');
+}
+.country-header-pt{
+   background-image: url('/images/countries/pt.p.png');
+}
+.country-header-cn{
+   background-image: url('/images/countries/cn.p.png');
+}
+.country-header-de{
+   background-image: url('/images/countries/de.p.png');
+}
+.country-header-dk{
+   background-image: url('/images/countries/dk.p.png');
+}
+.country-header-fr{
+   background-image: url('/images/countries/fr.p.png');
+}
+.country-header-gr{
+   background-image: url('/images/countries/gr.p.png');
+}
+.country-header-hu{
+   background-image: url('/images/countries/hu.p.png');
+}
+.country-header-id{
+   background-image: url('/images/countries/id.p.png');
+}
+.country-header-it{
+   background-image: url('/images/countries/it.p.png');
+}
+.country-header-nl{
+   background-image: url('/images/countries/nl.p.png');
+}
+.country-header-pl{
+   background-image: url('/images/countries/pl.p.png');
+}
+.country-header-ro{
+   background-image: url('/images/countries/ro.p.png');
+}
+.country-header-ru{
+   background-image: url('/images/countries/ru.p.png');
+}
+.country-header-uk{
+   background-image: url('/images/countries/uk.p.png');
+}
+#language-header{
+   background-image: url('/images/language.png');
+}
+#updated-header{
+   background-image: url('/images/updated.png');
+}
+
+
+
+
+
+li.bullet
+{
+ background: url('/images/profile-bullet.png') no-repeat;
+}
+li
+{
+ color:grey;
+}
+strong
+{
+ color:#1296b6;
+}
+img.profile-photos-verysmall
+{
+ background-image: url('/images/photo-frame.png');
+ height:54px;
+ width:54px;
+ border: none;
+ padding: 5px;
+ margin-right:10px;
+ margin-bottom:10px;
+}
+div.frame.top
+{
+ margin-left:15px;
+}
+div.frame
+{
+ width:64px;
+ height:64px;
+ margin-left:0px;
+ margin-right:10px;
+ background-image: url('/images/photo-frame.png');
+}
+
+#slideshow
+{
+ width:160px;
+ height:74px;
+ margin-left:30px;
+}
+td.title
+{
+ vertical-align:top;
+ padding-top:10px;
+}
+img.thumbnail
+{
+ border:2px solid rgb(93, 179, 203) ! important;
+}
+#profile-title
+{
+ position:relative;
+ display:inline;
+}
+#profile-top
+{
+ border-top:10px solid white;
+ height: 9px;
+ width: 740px;
+ background: url('/images/profile-top.png') no-repeat scroll top left;
+}
+#profile-bottom
+{
+ margin-bottom:5px;
+ height: 36px;
+ width: 740px;
+ background: url('/images/profile-bottom.png') no-repeat scroll top left;
+}
+#profile-header {
+ border-top-width:0px !important;
+ width: 740px;
+ color: #1296b6; 
+ text-align: left;
+ background: url('/images/profile-main.png') repeat scroll top left;
+ font: normal normal normal 25px/1.4 Arial,sans-serif;
+ height:auto;
+}
+img.profileimage-verysmall,
+#profile-header img#primaryphoto {
+ height:54px;
+ width:54px;
+ padding-left: 5px;
+ padding-top: 5px;
+ border: none;
+}
+#actions
+{
+ margin-top:20px;
+ list-style: none;
+ font: normal normal normal 15px/20px serif;
+}
+#actions a
+{
+ text-decoration:none;
+ margin-left:10px;
+ margin-bottom:50px;
+}
+.profile-page h2
+{
+ display: block;
+ width: 525px;
+ height: 57px;
+ line-height: 57px;
+ color: #1296b6;
+ font: normal normal normal 21px/57px serif;
+ background: url('/images/h2.wide.png') no-repeat scroll top left;
+ padding-left:10px;
+}
+
+.profile-page h2.small
+{
+  width: 205px;
+  font: normal normal normal 20px/57px serif;
+  background: url('/images/h2.wide-small.png') no-repeat scroll top left;
+}
+.profile-page #detail
+{
+ list-style: none;
+ font: normal normal normal 15px/20px serif;
+ margin:0px;
+ padding-left:15px;
+}
+.profile-page .button
+{
+ display: block;
+ padding: 3px 10px;
+ color: white;
+ border: 1px solid #1296b6;
+ background: #72c2dd;
+ text-decoration: none;
+ width: 150px;
+}
+.profile-page #friendlist .nickname
+{
+ text-align: center;
+}
+.profile-page #friendlist
+{
+ margin-left:15px;
+}
+
+a.next
+{
+ float:right;
+ padding-right:50px;
+}
+
+span.green
+{
+ font: normal normal normal 18px serif;
+ color:#8ac752;
+}
+
+
+
+#profile #browse-friends{
+   width: 495px;
+   height: 550px;
+   margin: 30px 0px 0px 275px;
+}
+
+#profile #browse-friends h3{
+   font-size: 17px;
+   margin: 0px 0px 15px 0px;
+}
+
+#profile #browse-friends td{
+   border: 2px solid #336699;
+   text-align: center;
+   width: 150px;
+   height: 150px;
+}
+
+#profile #browse-friends td p{
+   margin: 5px 0px 0px 0px;
+}
+
+#profile #browse-friends td a{
+   font-size: 15px;
+   font-weight: bold;
+   text-decoration: none;
+}
+
+#profile #browse-friends td img{
+   background: none;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   width: 110px;
+   height: 110px;
+   border: none;
+}
+
+#profile #browse-friends td:hover{
+   background-color: #F0F8FF;
+}
+
+
+
+#profile #profile-comments{
+   width: 495px;
+   height: 600px;
+   margin: 30px 0px 0px 275px;
+}
+
+#profile #profile-comments h3{
+   font-size: 17px;
+   margin: 0px 0px 15px 0px;
+}
+
+#profile #profile-comments div.profile-comment table{
+   border: 1px solid #3ea4c3;
+   margin: 2px;
+   width: 490px;
+   height: 100px;
+   font-size: 15px;
+   color: black;
+}
+
+#profile #profile-comments div.profile-comment td{
+   vertical-align: top;
+}
+
+#profile #profile-comments div.profile-comment td.top{
+   background-color: #3ea4c3;
+   color: white; 
+   font-weight: bold;
+   text-indent: 2px;
+   height: 10px;
+}
+
+#profile #profile-comments div.profile-comment td.date{
+   height: 10px;
+}
+
+#profile #profile-comments div.profile-comment td.content{
+   font-style: italic;
+   font-weight: bold;
+   border-top: 1px solid #3ea4c3;
+}
+
+#profile #profile-comments div.profile-comment td.image{
+   width:100px;
+   background-color: #3ea4c3;
+}
+
+#profile #profile-comments div.profile-comment img{
+   background: none; 
+   width: 80px;
+   height: 80px;
+   margin: 10px;
+   padding: 2px;
+   border: 1px solid white;
+}
+
+
+
+
+
+#happybirthday {
+  text-align: left;
+}
+#happybirthday-header h1 {
+   display: none;
+}
